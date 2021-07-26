@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+int largePrime(int N,int P)
+{
+    int sum=0;
+    while(N)
+    {
+        N=N/P;
+        sum+=N;
+    }
+    return sum;
+}
+int main()
+{
+    int test_case;
+    cin>>test_case;
+    while(test_case--)
+    {
+        int N,P;
+        cin>>N>>P;
+        cout<<largePrime(N,P)<<endl;
+    }
+    return 0;
+}
