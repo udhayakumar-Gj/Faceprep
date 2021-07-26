@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+void findnarr()
+{
+    long long val;
+    const int mod=1e9+7;
+    cin>>val;
+    long long ans=val*(2*val-1);
+    ans=ans%mod;
+    cout<<ans<<endl;
+
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        findnarr();
+    }
+    return 0;
+}
