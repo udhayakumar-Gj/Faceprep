@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Node{
+    struct Node *left;
+    int data;
+    struct Node *right;
+};
+struct Node *root=NULL;
+//create node
+void insertNode();
+void inorder(struct Node *t);
+void preorder(struct Node *r);
+void postorder(struct Node *p);
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    while(n)
+    {
+        insertNode();
+        n--;
+    }
+    inorder(root);
+    printf("\n");
+    preorder(root);
+    printf("\n");
+    postorder(root);
+
+    return 0;
+}
+void insertNode()
+{
+    int d;
+    scanf("%d",&d);
+    struct Node *newNode;
+    newNode=(struct Node*)malloc(sizeof(struct Node));
+    newNode->data=d;
+    newNode->left=NULL;
+    newNode->right=NULL;
+    if(root==NULL)
+    {
+        root=newNode;
+    }else{
+        struct Node *curr,*parent;
+        curr=root;
+        while(curr)
+        {
+            parent=curr;
+            if(newNode->data > curr->data)
+            {
+                curr=curr->right;
+            }else{
+                curr=curr->left;
+            }
+        }
+        if(newNode->data > parent->data){
+            parent->right=newNode;
+        }else{
+            parent->left=newNode;
+        }
+    }
+}
+
+void inorder(struct Node *t)
+{
+   if(root == NULL)
+	{
+		printf("No element");
+		return;
+	}
+    if(t)
+    {
+       inorder(t->left);
+       printf("%d ",t->data);
+       inorder(t->right);
+    }
+}
+void preorder(struct Node *r)
+{
+    if(root == NULL)
+	{
+		printf("No element");
+		return;
+	}
+    if(r!=NULL)
+    {
+        printf("%d ",r->data);
+        preorder(r->left);
+        preorder(r->right);
+    }
+}
+
+void postorder(struct Node *p)
+{
+    if(root == NULL)
+	{
+		printf("No element");
+		return;
+	}
+    if(p!=NULL)
+    {
+        postorder(p->left);
+        postorder(p->right);
+        printf("%d ",p->data);
+    }
+
+}
