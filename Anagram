@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<ctype.h>
+int main()
+{
+    char c[1000],c1[1000];
+    int count=0,sum=0,sum1=0;
+    scanf("%s",c);
+    scanf("%s",c1);
+    while(c[count]!='\0')
+    {
+       sum+=tolower(c[count]);
+       sum1+=tolower(c1[count]);
+       count++;
+    }
+    if(sum==sum1)
+    {
+        printf("Anagram");
+    }else
+    {
+        printf("Not anagrams");
+    }
+    return 0;
+}
