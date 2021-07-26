@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int flag=0,flag1=0;
+    long int l,r;
+    scanf("%ld %ld",&l,&r);
+    for(int i=l;i<=r;i++)
+    {
+        flag1++;
+        int num1=i,c1=0;
+        while(num1)
+        {
+            c1++;
+            num1=num1/10;
+        }
+           int num=i,arr[10]={0},j,co=0;
+            while(num)
+            {
+                j=num%10;
+                arr[co]=j;
+                co++;
+                num=num/10;
+            }
+            arr[co++]='\0';
+            int c=1,count=0;
+            while(arr[c]!='\0')
+            {
+                if(arr[0]==arr[c])
+                {
+                    count++;
+                }
+                c++;
+            }
+            if(count==c1-1)
+            {
+                flag++;
+            }
+
+    }
+   if(flag1-flag==0)
+    {
+        printf("No Unique Number");
+    }else{
+        printf("%d",flag1-flag);
+    }
+
+    return 0;
+}
