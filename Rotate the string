@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+#include<ctype.h>
+#include<string.h>
+void lestRotate(char *ch,int val);
+void rightRotate(char *ch,int val);
+int main()
+{
+    char ch[1000];
+    scanf("%s",&ch);
+    //printf("%s",ch);
+    int n;
+    scanf(" %d",&n);
+    //printf("%d",n);
+    char c;
+    scanf(" %c",&c);
+    //printf("%c",c);
+    c=toupper(c);
+    switch(c)
+    {
+        case 'L': lestRotate(ch,n);
+                  break;
+        case 'R': rightRotate(ch,n);
+                  break;
+        default:printf("Invalid input");
+    }
+    return 0;
+}
+void lestRotate(char *ch,int val)
+{
+    char f_char;
+    int len;
+    len=strlen(ch)-1;
+    while(val--)
+    {
+        f_char=ch[0];
+        for(int i=0;i<len;i++)
+        {
+            ch[i]=ch[i+1];
+        }
+        ch[len]=f_char;
+    }
+    printf("%s",ch);
+}
+void rightRotate(char *ch,int val)
+{
+    char l_char;
+    int len;
+    len=strlen(ch)-1;
+    while(val--)
+    {
+        l_char=ch[len];
+        for(int i=len;i>0;i--)
+        {
+            ch[i]=ch[i-1];
+        }
+        ch[0]=l_char;
+    }
+    printf("%s",ch);
+}
