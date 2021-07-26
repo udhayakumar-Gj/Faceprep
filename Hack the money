@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+bool val(int n,int curr);
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n;
+        scanf("%d",&n);
+        if(val(n,1)==true)
+        {
+            printf("Yes\n");
+        }else{
+            printf("No\n");
+        }
+    }
+    return 0;
+}
+bool val(int n,int curr)
+{
+    if(n==curr)
+    {
+        return true;
+    }
+    if(curr>n)
+    {
+        return false;
+    }else{
+        if(val(n,curr*10))
+        {
+            return true;
+        }else if(val(n,curr*20))
+        {
+            return true;
+        }
+
+    }
+    return false;
+}
