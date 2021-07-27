@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+long long int values[26];
+void weight();
+string shortestString(long long int n);
+long long int searchNear(long long int n);
+int main()
+{
+    long long int n;
+    cin>>n;
+    weight();
+    cout<<shortestString(n)<<endl;
+    return 0;
+}
+void weight()
+{
+    values[0]=1;
+    for(int i=1;i<26;i++)
+    {
+        values[i]=(i+1)*values[i-1]+values[i-1];
+    }
+}
+string shortestString(long long int n)
+{
+    string s="";
+    while(n!=0)
+    {
+        int index=searchNear(n);
+        s.push_back(index+65);
+        n=n-values[index];
+    }
+    reverse(s.begin(),s.end());
+    return s;
+}
+long long int searchNear(long long int n)
+{
+    int ans=-1,low=0,hig=25,mid;
+    while(low<=hig)
+    {
+       mid=(low+hig)/2;
+       if(n>=values[mid])
+       {
+           ans=mid;
+           low=mid+1;
+       }else{
+            hig=mid-1;
+       }
+    }
+    return ans;
+
+}
