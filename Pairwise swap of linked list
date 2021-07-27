@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+struct node *root=NULL,*s1,*s2;
+
+void createNode(int num);
+void transverse();
+int length();
+void swap();
+int main()
+{
+    int num;
+    while(1)
+    {
+        scanf("%d",&num);
+        if(num<0)
+        {
+            break;
+        }
+        createNode(num);
+    }
+    swap();
+    transverse();
+    return 0;
+}
+void createNode(int num)
+{
+    struct node *newNode;
+    newNode=(struct node *)malloc(sizeof(struct node));
+    if(newNode == NULL)
+    {
+        printf("Unable to allocate memory.");
+    }else{
+        newNode->data=num;
+        newNode->next=NULL;
+        if(root==NULL)
+        {
+            root=newNode;
+            s1=newNode;
+        }else{
+            root->next=newNode;
+            root=newNode;
+        }
+    }
+}
+void transverse()
+{
+    struct node *temp;
+    temp=s2;
+    if(temp!=NULL)
+    {
+        while(temp!=NULL)
+        {
+            printf("%d\n",temp->data);
+            temp=temp->next;
+        }
+    }else{
+        printf("Linked list empty");
+    }
+}
+int length()
+{
+    int count=0;
+    struct node *temp=s1;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    //printf("%d",count);
+    return count;
+}
+void swap()
+{
+    s2=s1;
+  int temp,temp1;
+  while(s1!=NULL)
+  {
+      temp=s1->next->data;
+      temp1=s1->data;
+      s1->data=temp;
+      s1->next->data=temp1;
+      temp=0;
+      temp1=0;
+      s1=s1->next->next;
+  }
+}
