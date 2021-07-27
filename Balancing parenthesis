@@ -1,0 +1,46 @@
+// CPP program to convert string
+// to char array
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+// driver code
+int main()
+{
+    int arr[1000],count=0;
+	// assigning value to string s
+	string s;
+    cin>>s;
+	int n = s.length();
+
+	// declaring character array
+	char char_array[n + 1];
+
+	// copying the contents of the
+	// string to char array
+	strcpy(char_array, s.c_str());
+
+	for (int i = 0; i < n; i++)
+    {
+        arr[i]=char_array[i];
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<i;j++)
+        {
+            if(arr[i]==arr[j])
+            {
+                count++;
+            }
+        }
+    }
+    if(n/2 == count)
+    {
+        cout<<"Not Balanced";
+    }else{
+        cout<<"Balanced";
+    }
+	return 0;
+}
